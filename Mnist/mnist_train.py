@@ -39,7 +39,7 @@ def train(mnist):
             xs, ys = mnist.train.next_batch(BATCH_SIZE)
             _, loss_value, step = sess.run([train_op, loss, global_step], feed_dict={x: xs, y_: ys})
             if i%1000 == 0:
-                print("After %d steps,loss on training " "batch is %g"%(step,loss_value))
+                print("After %d steps,loss on training ""batch is %g"%(step,loss_value))
                 saver.save(sess,os.path.join(MODEL_SAVE_PATH,MODEL_NAME),global_step)
 
 def main(argv=None):
