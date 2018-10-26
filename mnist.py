@@ -14,6 +14,7 @@ MOVING_AVERAGE_DECAY = 0.99
 def inference(input_tensor,avg_class,weight1,biase1,weight2,biase2):
     if avg_class == None:
         input_tensor = tf.nn.relu(tf.matmul(input_tensor,weight1)+biase1)
+        # 计算损失函数时会一并计算softmax函数，所以这里不需要加入激活函数
         return tf.matmul(input_tensor,weight2)+biase2
     else:
         input_tensor = tf.nn.relu(tf.matmul(input_tensor,avg_class.average(weight1))+avg_class.average(biase1))
